@@ -94,10 +94,11 @@ function addFilterButton(result) {
 function processResultList(nodeList, addButtons = false) {
   show.log("Starting Filter");
   
-  const results = [...nodeList];
-  results.forEach(result => {
-    processResult(result);
-    if (addButtons) { addFilterButton(result); }
+  nodeList.forEach(result => {
+    if (result.nodeName == "ARTICLE") {
+      processResult(result);
+      if (addButtons) { addFilterButton(result); }
+    }
   });
   
   show.log("Finished Filter");
